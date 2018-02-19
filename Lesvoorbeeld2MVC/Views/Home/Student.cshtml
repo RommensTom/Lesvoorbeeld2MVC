@@ -1,0 +1,30 @@
+﻿@using MyHowest;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Student</title>
+</head>
+<body>
+    <h2>Studenten</h2>
+
+    
+        @foreach (Student student in ViewBag.Studenten)
+        {
+            <ul>
+                <li>@student.Id</li>
+                <li>@student.Naam</li>
+                <li>@student.AfstudeerGraad</li>
+            </ul>
+        }
+
+    <a asp-controller="Home" asp-action="Index">Back</a>
+
+            
+</body>
+</html>
