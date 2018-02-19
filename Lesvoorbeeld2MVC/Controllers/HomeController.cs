@@ -8,9 +8,22 @@ namespace Lesvoorbeeld2MVC.Controllers
 {
     public class HomeController : Controller
     {
-        public string Index(string name)
+        private string[] groenten = { "Rode kool", "Spruitjes", "Wortel", "SpiNazi", "Aardappellleen", "Apple" , "Pear", "ComaPatient"};
+        public ViewResult Index(string name)
         {
-            return $"Hallo {name}";
+            ViewBag.Groet = DateTime.Now.Hour < 12 ? "Goeiemorgen" : "Goeie-Niet-Morgen";
+            return View();
+        }
+
+        public ViewResult Groenten(string zoekGroente)
+        {
+            ViewBag.Groenten = groenten;
+            if (!string.IsNullOrEmpty(zoekGroente))
+            {
+                ViewBag.Zoekresultaat = $"De gezochte groente is de {Array.IndexOf(groenten, zoekGroente) + 1}e uit de lijst";
+            }
+            
+            return View();
         }
     }
 }
